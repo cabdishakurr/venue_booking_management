@@ -20,7 +20,7 @@
 #
 ###############################################################################
 import json
-import pytz
+import io
 from odoo import fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools import date_utils, io, xlsxwriter
