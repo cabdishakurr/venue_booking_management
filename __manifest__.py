@@ -21,19 +21,16 @@
 ###############################################################################
 {
     'name': 'Venue / Event Booking Management',
-    'version': '17.0.1.0.3',
-    'summary': 'Core Module for Managing Different Types of '
-               'Venue/ Event Booking.',
-    'description': 'Core Module for Managing Different Types of '
-                   'Venue/ Event Booking, Event Booking, Venue Booking, '
-                   'Space Booking, Booking, Event, Venue, Wedding, Birthday, '
-                   'Party, Hall Booking, Room Booking',
+    'version': '18.0.1.0.0',
+    'summary': 'Core Module for Managing Different Types of Venue/ Event Booking.',
+    'description': 'Core Module for Managing Different Types of Venue/ Event Booking...',
     "category": "Account/Website",
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
-    'depends': ['base', 'account', 'website'],
+    'depends': ['base', 'account', 'website', 'portal'],
     'website': "https://www.cybrosys.com",
+    'license': 'AGPL-3',
     'data': [
         'security/venue_booking_management_groups.xml',
         'security/venue_booking_secruity.xml',
@@ -62,18 +59,17 @@
             'venue_booking_management/static/src/js/website_venue_booking.js'
         ],
         'web.assets_backend': [
-            'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap',
+            ('include', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'),
             'venue_booking_management/static/src/css/venue_dashboard.css',
             'venue_booking_management/static/src/scss/venue_booking.scss',
             'venue_booking_management/static/src/xml/dashboard_templates.xml',
             'venue_booking_management/static/src/js/action_manager.js',
             'venue_booking_management/static/src/js/dashboard_action.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js'
+            ('include', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js')
         ]
     },
-    'images': ['static/description/banner.jpg'],
-    'license': 'AGPL-3',
-    'installable': True,
     'application': True,
+    'installable': True,
+    'auto_install': False,
 }
 

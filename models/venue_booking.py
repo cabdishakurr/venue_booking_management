@@ -28,8 +28,9 @@ from odoo.exceptions import UserError, ValidationError
 class VenueBooking(models.Model):
     """Model for managing the Venue Booking"""
     _name = 'venue.booking'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
     _description = 'Venue Reservation'
+    _rec_name = 'name'
 
     name = fields.Char(string="Name", help="Name of the venue type")
     ref = fields.Char(string='Ref', readonly=True,
@@ -154,15 +155,15 @@ class VenueBooking(models.Model):
         """Checking dates while Booking the Venues based on the changes
         of the Dates"""
         if self.venue_id:
-            booking = self.env['venue.booking'].search(
-                [('start_date', '<', self.end_date),
-                 ('end_date', '>', self.start_date),
-                 ('venue_id', '=', self.venue_id.id),
-                 ('state', 'in', ['confirm', 'invoice'])
-                 ])
+            domain = [
+                ('start_date', '<', self.end_date),
+                ('end_date', '>', self.start_date),
+                ('venue_id', '=', self.venue_id.id),
+                ('state', 'in', ['confirm', 'invoice'])
+            ]
+            booking = self.env['venue.booking'].search(domain)
             if booking:
-                raise ValidationError(
-                    "Venue is not available for the selected time range.")
+                raise ValidationError(_("Venue is not available for the selected time range."))
 
     @api.depends('start_date', 'end_date')
     def _compute_days_difference(self):

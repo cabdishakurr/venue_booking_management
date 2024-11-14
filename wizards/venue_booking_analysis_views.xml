@@ -9,8 +9,8 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="venue_id"/>
-                            <field name="partner_id"/>
+                            <field name="venue_id" widget="many2one"/>
+                            <field name="partner_id" widget="many2one"/>
                         </group>
                         <group>
                             <field name="start_date" required="1"/>
@@ -21,11 +21,11 @@
                 <footer>
                     <button string="Print PDF"
                             name="action_print_pdf" type="object"
-                            class="btn-primary"/>
+                            class="btn btn-primary"/>
                     <button string="Print XLSX"
                             name="action_print_xlsx" type="object"
-                            class="btn-primary"/>
-                    <button string="Discard" class="btn-secondary"
+                            class="btn btn-primary"/>
+                    <button string="Discard" class="btn btn-secondary"
                             special="cancel"/>
                 </footer>
             </form>
